@@ -9,12 +9,12 @@ using UnityEngine.UI;
 public class Character : MonoBehaviour
 {
     // properties
-    private float moveSpeed = 10f;
-    private float maxHealthPoint = 500f;
-    private float currentHealth;
-    private float attackDamage = 50f;
-    private float attackRange = 100f;
-    private float attackSpeed = 20f;
+    [SerializeField] protected float maxHealthPoint = 500f;
+    [SerializeField] protected float currentHealth;
+    [SerializeField] protected float moveSpeed = 10f;
+    [SerializeField] protected float attackDamage = 50f;
+    [SerializeField] protected float attackRange = 100f;
+    [SerializeField] protected float attackSpeed = 20f;
     [SerializeField] protected GameObject deathPrefeb;
 
     // encapsulation
@@ -71,5 +71,31 @@ public class Character : MonoBehaviour
     public float GetAttackSpeed()
     {
         return attackSpeed;
+    }
+
+    protected bool takingFireDmg = false;
+
+    protected void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("FireCloak"))
+        {
+            takingFireDmg = true;
+        }
+    }
+
+    protected void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("FireCloak"))
+        {
+            takingFireDmg = false;
+        }
+    }
+
+    protected void FixedUpdate()
+    {
+        if (takingFireDmg)
+        {
+            currentHealth -= 1f;
+        }
     }
 }

@@ -6,11 +6,19 @@ using UnityEngine.UI;
 
 public class Attack : MonoBehaviour
 {
-    [SerializeField] private Character character;
-    [SerializeField] private GameObject spellPrefeb;
-    [SerializeField] private Transform attackPoint;
+    private Character character;
+    private GameObject spellPrefeb;
+    private Transform attackPoint;
     private bool canAttack;
-    [SerializeField] Image icon;
+    private Image icon;
+
+    private void Start()
+    {
+        character = GetComponent<Character>();
+        attackPoint = GameObject.Find("Attack").transform;
+        spellPrefeb = Resources.Load<GameObject>("GameObjects/Spell");
+        icon = GameObject.Find("AttackIcon").GetComponent<Image>();
+    }
 
     // basic attack logic
     public void Expelliarmus()

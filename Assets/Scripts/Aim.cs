@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class Aim : MonoBehaviour
 {
-    [SerializeField] private FixedJoystick js;
-    [SerializeField] private SpriteRenderer aim; // the aiming triangle
-    [SerializeField] private Attack attack;
+    private GameObject js;
+    private FixedJoystick joystick;
+    private GameObject aimObject;
+    private SpriteRenderer aim; // the aiming triangle
+    private Attack attack;
 
     private double current;
     private double before;
@@ -17,12 +19,17 @@ public class Aim : MonoBehaviour
     {
         current = 0;
         before = 0;
+        js = GameObject.Find("Aim Joystick");
+        aimObject = GameObject.Find("Triangle");
+        aim = aimObject.GetComponent<SpriteRenderer>();
+        joystick = js.gameObject.GetComponent<FixedJoystick>();
+        attack = GetComponentInParent<Attack>();
     }
 
     private void Update()
     {
-        float x = js.Horizontal;
-        float y = js.Vertical;
+        float x = joystick.Horizontal;
+        float y = joystick.Vertical;
 
         // calculating the position of joystick in current and last frame
         before = current;

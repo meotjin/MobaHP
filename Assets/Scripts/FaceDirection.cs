@@ -6,7 +6,14 @@ using UnityEngine;
 public class FaceDirection : MonoBehaviour
 {
     // code for player to face the direction of movement
-    [SerializeField] FixedJoystick js;
+    private GameObject joystick;
+    private FixedJoystick js;
+
+    private void Start()
+    {
+        joystick = GameObject.Find("Move Joystick");
+        js = joystick.GetComponent<FixedJoystick>();
+    }
 
     private void FixedUpdate()
     {
