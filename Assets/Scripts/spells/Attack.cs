@@ -16,7 +16,7 @@ public class Attack : MonoBehaviour
     {
         character = GetComponent<Character>();
         attackPoint = GameObject.Find("Attack").transform;
-        spellPrefeb = Resources.Load<GameObject>("GameObjects/Spell");
+        spellPrefeb = Resources.Load<GameObject>("GameObjects/FireBall");
         icon = GameObject.Find("AttackIcon").GetComponent<Image>();
     }
 
@@ -25,9 +25,11 @@ public class Attack : MonoBehaviour
     {
         if (canAttack)
         {
+            Quaternion rot = attackPoint.rotation;
             canAttack = false;
             icon.fillAmount = 0;
-            GameObject spell = Instantiate(spellPrefeb,attackPoint.position, attackPoint.rotation);
+            GameObject spell = Instantiate(spellPrefeb, attackPoint.position, rot);
+            spell.transform.Rotate(0,0,rot.z+90);
             spell.GetComponent<OnContact>().Damage = character.GetAttackDamage();
             Rigidbody2D spellRb = spell.GetComponent<Rigidbody2D>();
             spellRb.AddForce(attackPoint.up * character.GetAttackSpeed(), ForceMode2D.Impulse);
@@ -39,5 +41,7 @@ public class Attack : MonoBehaviour
     {
         if (icon.fillAmount == 1) { canAttack = true; }
         else icon.fillAmount += 0.02f;
+        //Debug.Log(attackPoint.rotation.z);
     }
+
 }

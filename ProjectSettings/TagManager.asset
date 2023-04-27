@@ -6,16 +6,20 @@ TagManager:
   tags:
   - Obsticle
   - FireCloak
+  - Dummy
+  - HealingCircle
+  - BuffingCircle
+  - Shield
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Spell
-  - 
-  - 
+  - Effect
+  - Shield
   - 
   - 
   - 

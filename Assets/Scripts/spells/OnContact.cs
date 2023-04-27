@@ -6,11 +6,16 @@ using UnityEngine;
 public class OnContact : MonoBehaviour
 {
     private float damage;
-    [SerializeField] private GameObject particle;
+    private GameObject particle;
 
     public float Damage
     {
         set => damage = value;
+    }
+
+    private void Start()
+    {
+        particle = Resources.Load<GameObject>("GameObjects/HitEffect");
     }
 
     [SerializeField] private GameObject contactPrefab;
@@ -18,7 +23,7 @@ public class OnContact : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         // if the hitted object is a enemy reduce their hp
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Dummy"))
         {
              Character character = col.gameObject.GetComponent<Character>();
              if (character.GetCurrentHealth() > 0)
@@ -26,8 +31,13 @@ public class OnContact : MonoBehaviour
                 character.SetCurrentHealth(character.GetCurrentHealth() - damage);
              }
         }
+        else if (col.gameObject.CompareTag("Shield"))
+        {
+            col.gameObject.GetComponent<Shield>().getHit();
+        }
         // destroy the spell and instantiate hit particles on contact
-        Instantiate(particle,transform.position,transform.rotation);
+        GameObject effct = Instantiate(particle,transform.position,transform.rotation);
         Destroy(contactPrefab);
+        Destroy(effct, 0.4f);
     }
 }

@@ -8,6 +8,7 @@ public class Dummy : Character
     [SerializeField] private Slider slider;
     private void Start()
     {
+        deathPrefeb = Resources.Load<GameObject>("GameObjects/DeathEffect");
         currentHealth = maxHealthPoint;
         slider.maxValue = maxHealthPoint;
         slider.value = currentHealth;

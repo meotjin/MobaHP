@@ -15,17 +15,20 @@ public class FaceDirection : MonoBehaviour
         js = joystick.GetComponent<FixedJoystick>();
     }
 
+    private bool facingLeft;
+
     private void FixedUpdate()
     {
         float x = js.Horizontal;
-        float y = js.Vertical;
-        if (x != 0 && y != 0)
+        if (x > 0 && !facingLeft)
         {
-            transform.rotation = Quaternion.Euler(0, 0, (float)(Math.Atan2(y, x) * 180 / Math.PI - 90)); 
+            facingLeft = true;
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
-        else
+        else if(x < 0 && facingLeft)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0 - transform.rotation.z);
+            facingLeft = false;
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
     }
 }

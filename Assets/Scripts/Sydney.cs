@@ -16,7 +16,7 @@ public class Sydney : Character
     private Image fill;
     [SerializeField] private float cooldown = 20f;
     [SerializeField] private float duration = 4f;
-    public GameObject fireCloak;
+    [SerializeField] public GameObject fireCloak;
     private bool canCast;
 
     private void Start()
@@ -25,9 +25,10 @@ public class Sydney : Character
         currentHealth = maxHealthPoint;
         slider.maxValue = maxHealthPoint;
         slider.value = currentHealth;
-        firstMechanicImg = Resources.Load<Sprite>("Electromancer16");
-        secondMechanicImg = Resources.Load<Sprite>("Cultist12");
-        fireCloak = GameObject.Find("FireCloak");
+        deathPrefeb = Resources.Load<GameObject>("GameObjects/DeathEffect");
+        firstMechanicImg = Resources.Load<Sprite>("Necromancer13");
+        secondMechanicImg = Resources.Load<Sprite>("Necromancer3");
+
         mechanicOne = GameObject.Find("subFirst");
         mechanicTwo = GameObject.Find("second");
         subMechanicTwo = GameObject.Find("subSecond");
