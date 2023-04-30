@@ -117,21 +117,6 @@ public class Character : MonoBehaviour
             underBuffLogo.SetActive(false);
         }
     }
-
-    protected void FixedUpdate()
-    {
-        if (takingFireDmg)
-        {
-            currentHealth -= 1f;
-        }
-        if (healing)
-        {
-            if (currentHealth < maxHealthPoint)
-            {
-                currentHealth += 0.2f;
-            }         
-        }
-    }
 }
 
 

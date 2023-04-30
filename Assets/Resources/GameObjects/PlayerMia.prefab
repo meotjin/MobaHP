@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8775938366276985781}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3547884187489620600
 SpriteRenderer:
@@ -104,7 +104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5166492642618693868
 Transform:
   m_ObjectHideFlags: 0
@@ -118,7 +118,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8775938366276985781}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6021283467092474556
 SpriteRenderer:
@@ -5012,7 +5012,7 @@ Transform:
   m_Children:
   - {fileID: 8775938365159928725}
   m_Father: {fileID: 8775938366276985781}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &8775938364247106817
 CircleCollider2D:
@@ -9841,7 +9841,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8775938366276985781}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8775938364582889190
 SpriteRenderer:
@@ -10050,7 +10050,7 @@ RectTransform:
   m_Children:
   - {fileID: 8775938364616123720}
   m_Father: {fileID: 8775938366276985781}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10339,7 +10339,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8775938366276985781}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8775938365631067184
 SpriteRenderer:
@@ -10586,13 +10586,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5166492642618693868}
   - {fileID: 8775938364582889209}
   - {fileID: 8775938366284582708}
   - {fileID: 8775938364872916863}
   - {fileID: 8775938364247106820}
   - {fileID: 8775938365631067199}
   - {fileID: 1512080138391003602}
-  - {fileID: 5166492642618693868}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10715,7 +10715,7 @@ Transform:
   - {fileID: 8775938365108386755}
   - {fileID: 8775938365993289672}
   m_Father: {fileID: 8775938366276985781}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8775938366284582707
 MonoBehaviour:

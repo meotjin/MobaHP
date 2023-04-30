@@ -70,6 +70,17 @@ public class Sydney : Character
 
     private void FixedUpdate()
     {
+        if (takingFireDmg)
+        {
+            currentHealth -= 1f;
+        }
+        if (healing)
+        {
+            if (currentHealth < maxHealthPoint)
+            {
+                currentHealth += 0.2f;
+            }
+        }
         if (fill.fillAmount == 1) {
             canCast = true;
         }

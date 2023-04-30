@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Recorder.OutputPath;
 
 public class Mia : Character
 {
@@ -85,6 +84,17 @@ public class Mia : Character
 
     private void FixedUpdate()
     {
+        if (takingFireDmg)
+        {
+            currentHealth -= 1f;
+        }
+        if (healing)
+        {
+            if (currentHealth < maxHealthPoint)
+            {
+                currentHealth += 0.2f;
+            }
+        }
         if (fillOne.fillAmount == 1)
         {
             canCastOne = true;
