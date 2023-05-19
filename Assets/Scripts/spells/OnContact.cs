@@ -35,9 +35,14 @@ public class OnContact : MonoBehaviour
         {
             col.gameObject.GetComponent<Shield>().getHit();
         }
+        if (col.gameObject.CompareTag("Summon"))
+        {
+            Destroy(col.gameObject);
+        }
         // destroy the spell and instantiate hit particles on contact
         GameObject effct = Instantiate(particle,transform.position,transform.rotation);
         Destroy(contactPrefab);
         Destroy(effct, 0.4f);
     }
+   
 }

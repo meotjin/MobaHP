@@ -21,6 +21,10 @@ public class Sydney : Character
 
     private void Start()
     {
+        attackPoint = GameObject.Find("Attack").transform;
+        spellPrefeb = Resources.Load<GameObject>("GameObjects/FireBall");
+        icon = GameObject.Find("AttackIcon").GetComponent<Image>();
+
         passive();
         currentHealth = maxHealthPoint;
         slider.maxValue = maxHealthPoint;
@@ -89,5 +93,8 @@ public class Sydney : Character
         {
             fireCloak.SetActive(false);
         }
+
+        if (icon.fillAmount == 1) { canAttack = true; }
+        else icon.fillAmount += 0.02f/attackCooldown;
     }
 }

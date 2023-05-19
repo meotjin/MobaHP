@@ -10,10 +10,11 @@ public class Aim : MonoBehaviour
     private FixedJoystick joystick;
     private GameObject aimObject;
     private SpriteRenderer aim; // the aiming triangle
-    private Attack attack;
 
     private double current;
     private double before;
+
+    private Character character;
 
     private void Start()
     {
@@ -23,7 +24,7 @@ public class Aim : MonoBehaviour
         aimObject = GameObject.Find("Triangle");
         aim = aimObject.GetComponent<SpriteRenderer>();
         joystick = js.gameObject.GetComponent<FixedJoystick>();
-        attack = GetComponentInParent<Attack>();
+        character = GetComponentInParent<Character>();
     }
 
     private void Update()
@@ -38,8 +39,12 @@ public class Aim : MonoBehaviour
         if (x != 0 && y != 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, (float)(Math.Atan2(y, x) * 180 / Math.PI - 90));
-             
-            if (current >= .7d) aim.enabled = true;
+
+            if (current >= .7d)
+            {
+                aim.enabled = true;
+                character.Expelliarmus();
+            }
             else aim.enabled = false;
             
         }
@@ -48,11 +53,11 @@ public class Aim : MonoBehaviour
             
             aim.enabled = false;
             
-            //checking if the joystick has been released while drawn to shoot
-            if (before - current >= .7d)
-            {
-                attack.Expelliarmus();
-            }
+            ////checking if the joystick has been released while drawn to shoot
+            //if (before - current >= .7d)
+            //{
+                
+            //}
             transform.rotation = Quaternion.Euler(0, 0, 0 - transform.rotation.z);
         }
     }

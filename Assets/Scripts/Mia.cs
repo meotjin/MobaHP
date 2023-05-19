@@ -27,6 +27,10 @@ public class Mia : Character
 
     private void Start()
     {
+        attackPoint = GameObject.Find("Attack").transform;
+        spellPrefeb = Resources.Load<GameObject>("GameObjects/FireBall");
+        icon = GameObject.Find("AttackIcon").GetComponent<Image>();
+
         deathPrefeb = Resources.Load<GameObject>("GameObjects/DeathEffect");
         currentHealth = maxHealthPoint;
         slider.maxValue = maxHealthPoint;
@@ -110,5 +114,8 @@ public class Mia : Character
         {
             buffRing.SetActive(false);
         }
+
+        if (icon.fillAmount == 1) { canAttack = true; }
+        else icon.fillAmount += 0.02f / attackCooldown;
     }
 }

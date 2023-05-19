@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 // root of all character classes
@@ -16,6 +17,12 @@ public class Character : MonoBehaviour
     [SerializeField] protected float attackRange = 100f;
     [SerializeField] protected float attackSpeed = 20f;
     protected GameObject deathPrefeb;
+
+    protected GameObject spellPrefeb;
+    protected Transform attackPoint;
+    protected bool canAttack;
+    protected Image icon;
+    [SerializeField] protected float attackCooldown = 0.5f;
 
     // encapsulation
     public void SetMoveSpeed(float amount)
@@ -75,6 +82,7 @@ public class Character : MonoBehaviour
 
     protected bool takingFireDmg = false;
     protected bool healing = false;
+    protected bool takingSummonDmg = false;
     [SerializeField] protected Image healthBar;
     [SerializeField] protected GameObject underBuffLogo;
 
@@ -96,6 +104,15 @@ public class Character : MonoBehaviour
             attackRange *= 1.1f;
             underBuffLogo.SetActive(true);
         }
+        if (collision.gameObject.CompareTag("Mimic"))
+        {
+            currentHealth -= 200;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Summon"))
+        {
+            takingSummonDmg = true;
+        }
     }
 
     protected void OnTriggerExit2D(Collider2D collision)
@@ -115,6 +132,26 @@ public class Character : MonoBehaviour
             attackDamage /= 1.1f;
             attackRange /= 1.1f;
             underBuffLogo.SetActive(false);
+        }
+        if (collision.gameObject.CompareTag("Summon"))
+        {
+            takingSummonDmg = false;
+        }
+    }
+
+    public void Expelliarmus()
+    {
+        if (canAttack)
+        {
+            Quaternion rot = attackPoint.rotation;
+            canAttack = false;
+            icon.fillAmount = 0;
+            GameObject spell = Instantiate(spellPrefeb, attackPoint.position, rot);
+            spell.transform.Rotate(0, 0, rot.z + 90);
+            spell.GetComponent<OnContact>().Damage = GetAttackDamage();
+            Rigidbody2D spellRb = spell.GetComponent<Rigidbody2D>();
+            spellRb.AddForce(attackPoint.up * GetAttackSpeed(), ForceMode2D.Impulse);
+            Destroy(spell, GetAttackRange() / 200f);
         }
     }
 }

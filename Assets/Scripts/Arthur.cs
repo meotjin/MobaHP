@@ -18,13 +18,17 @@ public class Arthur : Character
 
     private void Start()
     {
+        attackPoint = GameObject.Find("Attack").transform;
+        spellPrefeb = Resources.Load<GameObject>("GameObjects/FireBall");
+        icon = GameObject.Find("AttackIcon").GetComponent<Image>();
+
         passive();
         currentHealth = maxHealthPoint;
         slider.maxValue = maxHealthPoint;
         slider.value = currentHealth;
         deathPrefeb = Resources.Load<GameObject>("GameObjects/DeathEffect");
-        firstMechanicImg = Resources.Load<Sprite>("Electromancer3");
-        secondMechanicImg = Resources.Load<Sprite>("Electromancer16");
+        firstMechanicImg = Resources.Load<Sprite>("Paladin14");
+        secondMechanicImg = Resources.Load<Sprite>("Priest8");
 
         mechanicOne = GameObject.Find("subFirst");
         mechanicTwo = GameObject.Find("second");
@@ -108,6 +112,9 @@ public class Arthur : Character
             canChoose = true;
         }
         else fill.fillAmount += 0.02f / cooldown;
+
+        if (icon.fillAmount == 1) { canAttack = true; }
+        else icon.fillAmount += 0.02f / attackCooldown;
     }
 
 }

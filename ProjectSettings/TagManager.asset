@@ -10,6 +10,8 @@ TagManager:
   - HealingCircle
   - BuffingCircle
   - Shield
+  - Mimic
+  - Summon
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - Spell
   - Effect
   - Shield
-  - 
-  - 
+  - Summon
+  - Ground
   - 
   - 
   - 
