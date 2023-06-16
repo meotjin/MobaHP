@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,17 @@ public class Summon : MonoBehaviour
     {
         target = p;
         set = true;
+    }
+
+    private string team = "neuteral";
+
+    public void SetTeam(string t)
+    {
+        team = t;
+    }
+    public string GetTeam()
+    {
+        return team;
     }
 
     private void Update()

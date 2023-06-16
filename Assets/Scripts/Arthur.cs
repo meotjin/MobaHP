@@ -51,6 +51,14 @@ public class Arthur : Character
         {
             Instantiate(deathPrefeb, transform.position, transform.rotation);
             Destroy(gameObject);
+            if (team == "blue")
+            {
+                GameObject.Find("GameController").GetComponent<Controller>().IncRed();
+            }
+            else if (team == "red")
+            {
+                GameObject.Find("GameController").GetComponent<Controller>().IncBlue();
+            }
         }
 
         if ((Input.touchCount > 1) && (Input.GetTouch(1).phase == TouchPhase.Began))

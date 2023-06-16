@@ -82,13 +82,21 @@ public class Edgar : Character
         {
             Instantiate(deathPrefeb, transform.position, transform.rotation);
             Destroy(gameObject);
+            if (team == "blue")
+            {
+                GameObject.Find("GameController").GetComponent<Controller>().IncRed();
+            }
+            else if (team == "red")
+            {
+                GameObject.Find("GameController").GetComponent<Controller>().IncBlue();
+            }
         }
 
         if ((Input.touchCount > 1) && (Input.GetTouch(1).phase == TouchPhase.Began))
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.GetTouch(1).position);
             RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
-            if (hit != null && hit.collider != null && canCastOne)
+            if (hit != null && hit.collider != null && hit.collider.gameObject.GetComponent<Character>().GetTeam() != GetTeam() && canCastOne)
             {
                 Debug.Log(spot1.position);
                 GameObject summon1 = Instantiate(summon, spot1.position, spot1.rotation);

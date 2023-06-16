@@ -10,6 +10,29 @@ using UnityEngine.UI;
 public class Character : MonoBehaviour
 {
     // properties
+    protected string team = "neuteral";
+
+    public void SetTeam(int k)
+    {
+        switch (k)
+        {
+            case 0:
+                team = "blue";
+                break;
+            case 1:
+                team = "red";
+                break;
+            default:
+                team = "neuteral";
+                break;
+        }
+    }
+
+    public string GetTeam()
+    {
+        return team;
+    }
+
     [SerializeField] protected float maxHealthPoint = 500f;
     [SerializeField] protected float currentHealth;
     [SerializeField] protected float moveSpeed = 10f;
@@ -104,12 +127,12 @@ public class Character : MonoBehaviour
             attackRange *= 1.1f;
             underBuffLogo.SetActive(true);
         }
-        if (collision.gameObject.CompareTag("Mimic"))
+        if (collision.gameObject.CompareTag("Mimic") && collision.gameObject.GetComponent<Mimic>().GetTeam() != team)
         {
             currentHealth -= 200;
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.CompareTag("Summon"))
+        if (collision.gameObject.CompareTag("Summon") && collision.gameObject.GetComponent<Summon>().GetTeam() != team)
         {
             takingSummonDmg = true;
         }
@@ -133,7 +156,7 @@ public class Character : MonoBehaviour
             attackRange /= 1.1f;
             underBuffLogo.SetActive(false);
         }
-        if (collision.gameObject.CompareTag("Summon"))
+        if (collision.gameObject.CompareTag("Summon") && collision.gameObject.GetComponent<Summon>().GetTeam() != team)
         {
             takingSummonDmg = false;
         }

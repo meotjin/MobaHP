@@ -59,6 +59,14 @@ public class Mia : Character
         {
             Instantiate(deathPrefeb, transform.position, transform.rotation);
             Destroy(gameObject);
+            if (team == "blue")
+            {
+                GameObject.Find("GameController").GetComponent<Controller>().IncRed();
+            }
+            else if (team == "red")
+            {
+                GameObject.Find("GameController").GetComponent<Controller>().IncBlue();
+            }
         }
         subMechanicOne.GetComponent<Button>().onClick.AddListener(HealingCircle);
         subMechanicTwo.GetComponent<Button>().onClick.AddListener(BuffingCircle);

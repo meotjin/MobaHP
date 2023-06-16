@@ -20,6 +20,7 @@ public class Dummy : Character
         {
             Instantiate(deathPrefeb, transform.position, transform.rotation);
             Destroy(gameObject);
+            GameObject.Find("GameController").GetComponent<Controller>().IncBlue();
         }
     }
     private void FixedUpdate()
