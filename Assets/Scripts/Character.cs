@@ -9,6 +9,8 @@ using UnityEngine.UI;
 // root of all character classes
 public class Character : MonoBehaviour
 {
+    protected AudioSource att;
+
     // properties
     protected string team = "neuteral";
 
@@ -134,6 +136,7 @@ public class Character : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Summon") && collision.gameObject.GetComponent<Summon>().GetTeam() != team)
         {
+            Debug.Log("ass");
             takingSummonDmg = true;
         }
     }
@@ -170,6 +173,7 @@ public class Character : MonoBehaviour
             canAttack = false;
             icon.fillAmount = 0;
             GameObject spell = Instantiate(spellPrefeb, attackPoint.position, rot);
+            //att.Play();
             spell.transform.Rotate(0, 0, rot.z + 90);
             spell.GetComponent<OnContact>().Damage = GetAttackDamage();
             Rigidbody2D spellRb = spell.GetComponent<Rigidbody2D>();

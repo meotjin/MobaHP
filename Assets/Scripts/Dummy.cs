@@ -19,8 +19,30 @@ public class Dummy : Character
         if (GetCurrentHealth() <= 0)
         {
             Instantiate(deathPrefeb, transform.position, transform.rotation);
-            Destroy(gameObject);
-            GameObject.Find("GameController").GetComponent<Controller>().IncBlue();
+            if (team == "red")
+            {
+                GameObject.Find("GameController").GetComponent<Controller>().IncBlue();
+            }
+            else if (team == "blue")
+            {
+                GameObject.Find("GameController").GetComponent<Controller>().IncRed();
+            }
+            SetCurrentHealth(GetMaxHealthPoint());
+        }
+        if (takingFireDmg)
+        {
+            currentHealth -= 1f;
+        }
+        if (takingSummonDmg)
+        {
+            currentHealth -= 1f;
+        }
+        if (healing)
+        {
+            if (currentHealth < maxHealthPoint)
+            {
+                currentHealth += 0.2f;
+            }
         }
     }
     private void FixedUpdate()

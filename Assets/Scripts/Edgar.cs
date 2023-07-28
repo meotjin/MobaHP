@@ -20,7 +20,7 @@ public class Edgar : Character
     [SerializeField] private Transform spot2;
     [SerializeField] private Transform spot3;
 
-    private float firstDuration = 10f;
+    private float firstDuration = 60f;
 
     private GameObject mimic;
     private GameObject summon;
@@ -34,12 +34,14 @@ public class Edgar : Character
 
     private void Start()
     {
+        att = Resources.Load<AudioSource>("04_Fire_explosion_04_medium");
+
         attackPoint = GameObject.Find("Attack").transform;
         spellPrefeb = Resources.Load<GameObject>("GameObjects/FireBall");
         icon = GameObject.Find("AttackIcon").GetComponent<Image>();
 
         mimic = Resources.Load<GameObject>("GameObjects/Mimic");
-        summon = Resources.Load<GameObject>("GameObjects/Summon1");
+        summon = Resources.Load<GameObject>("GameObjects/Summon");
 
         deathPrefeb = Resources.Load<GameObject>("GameObjects/DeathEffect");
         currentHealth = maxHealthPoint;
@@ -105,7 +107,7 @@ public class Edgar : Character
                 summon2.GetComponent<Summon>().Setup(hit.collider.gameObject);
                 GameObject summon3 = Instantiate(summon, spot3.position, spot3.rotation);
                 summon3.GetComponent<Summon>().Setup(hit.collider.gameObject);
-                canCastTwo = false;
+                canCastOne = false;
                 canChoose = false;
                 DeHighlight();
                 fillTwo.fillAmount = 0;

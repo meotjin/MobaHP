@@ -5384,7 +5384,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 14fab0de6c54324468738e7b38a88207, type: 2}
+  - {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5523,7 +5523,6 @@ GameObject:
   - component: {fileID: 1463000576161787983}
   - component: {fileID: 1463000576161787977}
   - component: {fileID: 1463000576161787978}
-  - component: {fileID: 1463000576161787972}
   - component: {fileID: 1463000576161787994}
   m_Layer: 0
   m_Name: PlayerSydney
@@ -5605,24 +5604,13 @@ MonoBehaviour:
   attackDamage: 50
   attackRange: 100
   attackSpeed: 20
+  attackCooldown: 0.5
   healthBar: {fileID: 1463000576068958209}
   underBuffLogo: {fileID: 3388173167781636576}
   slider: {fileID: 1463000575643736133}
   cooldown: 20
   duration: 4
   fireCloak: {fileID: 1463000575721545943}
---- !u!114 &1463000576161787972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1463000576161787968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a37d5b2ef968c4e9485ca20a3e73f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!70 &1463000576161787994
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -10685,7 +10673,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 14fab0de6c54324468738e7b38a88207, type: 2}
+  - {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

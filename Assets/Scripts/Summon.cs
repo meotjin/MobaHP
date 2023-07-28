@@ -32,6 +32,9 @@ public class Summon : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position,target.transform.position,moveSpeed * Time.deltaTime);
         }
-           
+        if (set && target == null)
+        {
+            Destroy(transform.gameObject);
+        }   
     }
 }

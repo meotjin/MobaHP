@@ -4916,7 +4916,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 14fab0de6c54324468738e7b38a88207, type: 2}
+  - {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9758,7 +9758,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 14fab0de6c54324468738e7b38a88207, type: 2}
+  - {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10564,7 +10564,6 @@ GameObject:
   - component: {fileID: 8775938366276985781}
   - component: {fileID: 8775938366276985782}
   - component: {fileID: 8775938366276985736}
-  - component: {fileID: 8775938366276985737}
   - component: {fileID: 8775938366276985780}
   - component: {fileID: 8775938366276985779}
   m_Layer: 0
@@ -10629,18 +10628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39ca6a33b3ad3d40a10c5dbdbb9d203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8775938366276985737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8775938366276985738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a37d5b2ef968c4e9485ca20a3e73f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8775938366276985780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10659,6 +10646,7 @@ MonoBehaviour:
   attackDamage: 50
   attackRange: 100
   attackSpeed: 20
+  attackCooldown: 0.5
   healthBar: {fileID: 8775938365462859043}
   underBuffLogo: {fileID: 8775938365631067185}
   slider: {fileID: 8775938364616123767}
